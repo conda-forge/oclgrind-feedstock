@@ -1,0 +1,24 @@
+From 08fe74304f79e6904888f2a8a5e799aa54757497 Mon Sep 17 00:00:00 2001
+From: Isuru Fernando <isuruf@gmail.com>
+Date: Wed, 2 Jan 2019 20:31:48 -0600
+Subject: [PATCH] Make clGetPlatformInfo visible in icd interface
+
+---
+ src/runtime/runtime.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/runtime/runtime.cpp b/src/runtime/runtime.cpp
+index 5f4078d..e832b89 100644
+--- a/src/runtime/runtime.cpp
++++ b/src/runtime/runtime.cpp
+@@ -269,6 +269,10 @@ clGetExtensionFunctionAddress
+   {
+     return (void*)clIcdGetPlatformIDsKHR;
+   }
++  else if (strcmp(funcname, "clGetPlatformInfo") == 0)
++  {
++    return (void*)clGetPlatformInfo;
++  }
+   else
+   {
+     return NULL;

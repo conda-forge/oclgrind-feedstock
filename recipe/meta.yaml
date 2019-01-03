@@ -9,9 +9,12 @@ package:
 source:
   url: https://github.com/jrprice/Oclgrind/archive/v{{ version }}.tar.gz
   sha256: 90518d47573e64c6c28e173dc6f10c4e0ca53a99543ef2f1afaac1cbf725fe90
+  patches:
+    # https://github.com/jrprice/Oclgrind/pull/161
+    - gh_161.patch
 
 build:
-  number: 0
+  number: 1
   skip: True  # [win and vc<14]
 
 requirements:

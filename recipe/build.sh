@@ -10,6 +10,7 @@ fi
 
 # avoid linking to libLLVM in build prefix
 rm -vf "$BUILD_PREFIX"/lib/libLLVM*.a
+rm -vf "$BUILD_PREFIX"/lib/libclang*.a
 
 cmake .. \
       -DCMAKE_BUILD_TYPE=Release \

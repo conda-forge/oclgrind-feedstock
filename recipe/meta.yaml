@@ -14,7 +14,7 @@ source:
     - gh_161.patch
 
 build:
-  number: 1002
+  number: 1003
   skip: True  # [win and vc<14]
 
 requirements:

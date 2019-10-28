@@ -1,6 +1,6 @@
 {% set name = "oclgrind" %}
 {% set version = "19.10" %}
-{% set llvm_version = "6.0.1" %}
+{% set llvm_version = "9.0.0" %}
 
 package:
   name: {{ name|lower }}
@@ -9,9 +9,6 @@ package:
 source:
   url: https://github.com/jrprice/Oclgrind/archive/v{{ version }}.tar.gz
   sha256: f9a8f22cb9f6d88670f2578c46ba0d728ba8eaee5c481c2811129dc157c43dc0
-  patches:
-    # https://github.com/jrprice/Oclgrind/pull/161
-    - gh_161.patch
 
 build:
   number: 0
@@ -26,6 +23,7 @@ requirements:
   host:
     - llvmdev   {{ llvm_version }}
     - clangdev  {{ llvm_version }}
+    - llvm
     - readline  # [unix]
 
 test:

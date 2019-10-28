@@ -1,6 +1,5 @@
 {% set name = "oclgrind" %}
-{% set version = "18.3" %}
-{% set llvm_version = "6.0.1" %}
+{% set version = "19.10" %}
 
 package:
   name: {{ name|lower }}
@@ -8,25 +7,24 @@ package:
 
 source:
   url: https://github.com/jrprice/Oclgrind/archive/v{{ version }}.tar.gz
-  sha256: 90518d47573e64c6c28e173dc6f10c4e0ca53a99543ef2f1afaac1cbf725fe90
-  patches:
-    # https://github.com/jrprice/Oclgrind/pull/161
-    - gh_161.patch
+  sha256: f9a8f22cb9f6d88670f2578c46ba0d728ba8eaee5c481c2811129dc157c43dc0
 
 build:
-  number: 1003
+  number: 0
   skip: True  # [win and vc<14]
 
 requirements:
   build:
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
+    - {{ compiler('c') }}    # [not win]
+    - {{ compiler('cxx') }}  # [not win]
+    - vs2017_{{ target_platform }}  # [win]
     - cmake
     - ninja   # [win]
   host:
-    - llvmdev   {{ llvm_version }}
-    - clangdev  {{ llvm_version }}
+    - llvmdev   9.*
+    - clangdev  9.*
     - readline  # [unix]
+    - khronos-opencl-icd-loader  # [win]
 
 test:
   commands:

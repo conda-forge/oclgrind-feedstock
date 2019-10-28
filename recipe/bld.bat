@@ -1,6 +1,9 @@
 mkdir build
 cd build
 
+set "CC=cl.exe"
+set "CXX=cl.exe"
+
 cmake -G "Ninja" .. ^
       -DCMAKE_BUILD_TYPE=Release ^
       -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ^

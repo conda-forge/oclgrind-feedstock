@@ -1,16 +1,12 @@
 #!/bin/bash
 
-mkdir build
-cd build
-
-if [ "$(uname)" == "Linux" ]
-then
-   export LDFLAGS="$LDFLAGS -Wl,-rpath-link,${PREFIX}/lib"
+if [[ "$target_platform" == "linux-ppc64le" ]]; then
+  CXXFLAGS=$(echo "${CXXFLAGS}" | sed "s/-std=c++17/-std=gnu++14/g")
+  sed -i.bak "s/-std=c++11//g" CMakeLists.txt
 fi
 
-# avoid linking to libLLVM in build prefix
-rm -vf "$BUILD_PREFIX"/lib/libLLVM*.a
-rm -vf "$BUILD_PREFIX"/lib/libclang*.a
+mkdir build
+cd build
 
 cmake .. \
       -DCMAKE_BUILD_TYPE=Release \
@@ -19,7 +15,7 @@ cmake .. \
       -DLIBDIR_SUFFIX="" \
       -DLLVM_DIR=${PREFIX}/lib/cmake/llvm
 
-make -j${CPU_COUNT}
+make -j${CPU_COUNT} VERBOSE=1
 make install
 make test
 

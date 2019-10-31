@@ -19,10 +19,11 @@ requirements:
     - {{ compiler('cxx') }}  # [not win]
     - vs2017_{{ target_platform }}  # [win]
     - cmake
+    - make    # [unix]
     - ninja   # [win]
   host:
-    - llvmdev   9.*
-    - clangdev  9.*
+    - llvmdev   >=6.0.0,<10.0.0.a0
+    - clangdev
     - readline  # [unix]
     - khronos-opencl-icd-loader  # [win]
 

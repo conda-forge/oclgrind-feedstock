@@ -3,11 +3,6 @@
 mkdir build
 cd build
 
-if [ "$(uname)" == "Linux" ]
-then
-   export LDFLAGS="$LDFLAGS -Wl,-rpath-link,${PREFIX}/lib"
-fi
-
 # avoid linking to libLLVM in build prefix
 rm -vf "$BUILD_PREFIX"/lib/libLLVM*.a
 rm -vf "$BUILD_PREFIX"/lib/libclang*.a
@@ -19,7 +14,7 @@ cmake .. \
       -DLIBDIR_SUFFIX="" \
       -DLLVM_DIR=${PREFIX}/lib/cmake/llvm
 
-make -j${CPU_COUNT}
+make -j${CPU_COUNT} VERBOSE=1
 make install
 make test
 

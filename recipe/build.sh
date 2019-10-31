@@ -3,9 +3,10 @@
 mkdir build
 cd build
 
-# avoid linking to libLLVM in build prefix
-rm -vf "$BUILD_PREFIX"/lib/libLLVM*.a
-rm -vf "$BUILD_PREFIX"/lib/libclang*.a
+if [[ "$target_platform" == "linux-ppc64le" ]]; then
+  CXXFLAGS=$(echo "${CXXFLAGS}" | sed "s/-std=c++17/-std=gnu++14/g")
+  sed -i.bak "s/-std=c++11//g" CMakeLists.txt
+fi
 
 cmake .. \
       -DCMAKE_BUILD_TYPE=Release \

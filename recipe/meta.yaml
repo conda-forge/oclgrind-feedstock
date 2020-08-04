@@ -1,5 +1,5 @@
 {% set name = "oclgrind" %}
-{% set version = "19.10" %}
+{% set version = "32" %}
 
 package:
   name: {{ name|lower }}
@@ -7,11 +7,11 @@ package:
 
 source:
   url: https://github.com/jrprice/Oclgrind/archive/v{{ version }}.tar.gz
-  sha256: f9a8f22cb9f6d88670f2578c46ba0d728ba8eaee5c481c2811129dc157c43dc0
+  sha256: 578ab3d510f86a2478e2f392e7a491eed31e90e3e4309e597f58f2c244cca45a
 
 build:
   number: 0
-  skip: True  # [win and vc<14]
+  skip: true  # [win and vc<14]
 
 requirements:
   build:
@@ -38,7 +38,7 @@ about:
   license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE
-  summary: 'An OpenCL device simulator and debugger'
+  summary: An OpenCL device simulator and debugger
   dev_url: https://github.com/jrprice/Oclgrind
 
 extra:

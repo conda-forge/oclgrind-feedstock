@@ -8,9 +8,11 @@ package:
 source:
   url: https://github.com/jrprice/Oclgrind/archive/v{{ version }}.tar.gz
   sha256: f9a8f22cb9f6d88670f2578c46ba0d728ba8eaee5c481c2811129dc157c43dc0
+  patches:
+    - gh184.diff
 
 build:
-  number: 0
+  number: 1
   skip: True  # [win and vc<14]
 
 requirements:
@@ -26,6 +28,7 @@ requirements:
     - clangdev
     - readline  # [unix]
     - khronos-opencl-icd-loader  # [win]
+    - zlib
 
 test:
   commands:

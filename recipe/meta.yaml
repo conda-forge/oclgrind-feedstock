@@ -12,7 +12,7 @@ source:
     - gh184.diff
 
 build:
-  number: 0
+  number: 1
   skip: True  # [win and vc<14]
 
 requirements:
@@ -28,6 +28,7 @@ requirements:
     - clangdev
     - readline  # [unix]
     - khronos-opencl-icd-loader  # [win]
+    - zlib
 
 test:
   commands:

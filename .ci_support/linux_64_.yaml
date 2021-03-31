@@ -17,6 +17,8 @@ docker_image:
 pin_run_as_build:
   readline:
     max_pin: x
+  zlib:
+    max_pin: x.x
 readline:
 - '8.0'
 target_platform:
@@ -26,3 +28,5 @@ zip_keys:
   - cxx_compiler_version
 - - cdt_name
   - docker_image
+zlib:
+- '1.2'

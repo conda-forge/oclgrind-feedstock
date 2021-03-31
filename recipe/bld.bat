@@ -16,3 +16,7 @@ ctest
 
 rmdir -Rf %LIBRARY_INC%\CL
 move %LIBRARY_LIB%\*.dll %LIBRARY_BIN%\
+
+mkdir %LIBRARY_PREFIX%\etc\OpenCL\vendors
+echo %LIBRARY_BIN%\oclgrind-rt-icd.dll > %LIBRARY_PREFIX%\etc\OpenCL\vendors\oclgrind.icd
+type %LIBRARY_PREFIX%\etc\OpenCL\vendors\oclgrind.icd

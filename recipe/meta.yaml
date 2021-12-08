@@ -1,5 +1,5 @@
 {% set name = "oclgrind" %}
-{% set version = "19.10" %}
+{% set version = "21.10" %}
 
 package:
   name: {{ name|lower }}
@@ -7,13 +7,10 @@ package:
 
 source:
   url: https://github.com/jrprice/Oclgrind/archive/v{{ version }}.tar.gz
-  sha256: f9a8f22cb9f6d88670f2578c46ba0d728ba8eaee5c481c2811129dc157c43dc0
-  patches:
-    - gh184.diff
-    - gh197.diff
+  sha256: b40ea81fcf64e9012d63c3128640fde9785ef4f304f9f876f53496595b8e62cc
 
 build:
-  number: 4
+  number: 0
   skip: True  # [win and vc<14]
 
 requirements:
@@ -25,7 +22,7 @@ requirements:
     - make    # [unix]
     - ninja   # [win]
   host:
-    - llvmdev   >=6.0.0,<10.0.0.a0
+    - llvmdev   >=6.0.0,<14
     - clangdev
     - readline  # [unix]
     - khronos-opencl-icd-loader  # [win]
@@ -44,7 +41,9 @@ about:
   license_file: LICENSE
   summary: 'An OpenCL device simulator and debugger'
   dev_url: https://github.com/jrprice/Oclgrind
+  doc_url: https://github.com/jrprice/Oclgrind/wiki/
 
 extra:
   recipe-maintainers:
     - isuruf
+    - matthiasdiener

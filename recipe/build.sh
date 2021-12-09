@@ -5,12 +5,12 @@ if [[ "$target_platform" == "linux-ppc64le" ]]; then
   sed -i.bak "s/-std=c++11//g" CMakeLists.txt
 fi
 
-mkdir build
-cd build
-
 if [[ "$CONDA_BUILD_CROSS_COMPILATION" == "1" ]]; then
   sed -i.bak "s,\${CLANG},$CXX," CMakeLists.txt
 fi
+
+mkdir build
+cd build
 
 cmake ${CMAKE_ARGS} .. \
       -DCMAKE_BUILD_TYPE=Release \

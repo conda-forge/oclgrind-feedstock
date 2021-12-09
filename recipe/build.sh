@@ -9,7 +9,7 @@ mkdir build
 cd build
 
 if [[ "$CONDA_BUILD_CROSS_COMPILATION" == "1" ]]; then
-  unset CLANG
+  sed -i.bak "s,\${CLANG},$CXX," CMakeLists.txt
 fi
 
 cmake ${CMAKE_ARGS} .. \

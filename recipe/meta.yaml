@@ -23,6 +23,7 @@ requirements:
     - ninja   # [win]
   host:
     - llvmdev   >=6.0.0,<14
+    - llvm
     - clangdev
     - readline  # [unix]
     - khronos-opencl-icd-loader  # [win]

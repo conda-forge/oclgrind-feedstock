@@ -8,7 +8,7 @@ fi
 mkdir build
 cd build
 
-cmake .. \
+cmake ${CMAKE_ARGS} .. \
       -DCMAKE_BUILD_TYPE=Release \
       -DCMAKE_INSTALL_PREFIX=${PREFIX} \
       -DCMAKE_PREFIX_PATH=${PREFIX} \
@@ -17,7 +17,10 @@ cmake .. \
 
 make -j${CPU_COUNT} VERBOSE=1
 make install
-make test
+
+if [[ "$CONDA_BUILD_CROSS_COMPILATION" != "1" ]]; then
+  make test
+fi
 
 mkdir -p ${PREFIX}/etc/OpenCL/vendors
 cp oclgrind.icd ${PREFIX}/etc/OpenCL/vendors/

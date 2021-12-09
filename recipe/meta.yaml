@@ -33,7 +33,7 @@ test:
   commands:
     - test -f "$PREFIX/lib/liboclgrind-rt-icd${SHLIB_EXT}"         # [unix]
     - if not exist %LIBRARY_BIN%\\oclgrind-rt-icd.dll exit 1       # [win]
-    - oclgrind --help
+    - oclgrind --help  # [build_platform == target_platform]
 
 about:
   home: https://github.com/jrprice/Oclgrind

@@ -8,6 +8,10 @@ fi
 mkdir build
 cd build
 
+if [[ "$CONDA_BUILD_CROSS_COMPILATION" == "1" ]]; then
+  unset CLANG
+fi
+
 cmake ${CMAKE_ARGS} .. \
       -DCMAKE_BUILD_TYPE=Release \
       -DCMAKE_INSTALL_PREFIX=${PREFIX} \

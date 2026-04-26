@@ -1,5 +1,5 @@
 {% set name = "oclgrind" %}
-{% set version = "21.10" %}
+{% set version = "26.03.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,15 +7,16 @@ package:
 
 source:
   url: https://github.com/jrprice/Oclgrind/archive/v{{ version }}.tar.gz
-  sha256: b40ea81fcf64e9012d63c3128640fde9785ef4f304f9f876f53496595b8e62cc
+  sha256: d21a705a2b71491b1505f34a50e14f9666516d1654c0e6745983408bb300e4c2
 
 build:
   number: 0
-  skip: True  # [win and vc<14]
+  skip: true  # [win and vc<14]
 
 requirements:
   build:
     - {{ compiler('c') }}    # [not win]
+    - {{ stdlib("c") }}      # [not win]
     - {{ compiler('cxx') }}  # [not win]
     - vs2017_{{ target_platform }}  # [win]
     - cmake
